@@ -1,56 +1,52 @@
 import tkinter as tk
-from tkinter import ttk, messagebox
+from tkinter import ttk
 
-# Create the main window
-root = tk.Tk()
-root.title("My Application")
+class App(tk.Tk):
+    def __init__(self):
+        super().__init__()
+        self.configure(bg='white')
 
-# Set the window size and position
-width = root.winfo_screenwidth()
-height = root.winfo_screenheight()
-root.geometry("%dx%d+0+0" % (width, height))
+        
+        # Set up the main window
+        self.title("Safe and Smart")
+        self.geometry("1400x800")
+        
+        # Create the tabs
+        self.notebook = ttk.Notebook(self)
+        
+        # Add the tabs
+        self.tab1 = tk.Frame(self.notebook)
+        self.notebook.add(self.tab1, text="Tab 1")
+        
+        self.tab2 = tk.Frame(self.notebook)
+        self.notebook.add(self.tab2, text="Tab 2")
+        
+        # Pack the notebook
+        self.notebook.pack(expand=True, fill="both")
+        
+        # Load the content for each tab
+        self.load_tab1()
+        self.load_tab2()
+        
+    def load_tab1(self):
+        # Load the content for Tab 1 from another file
+        from Pool_Stream import PoolStream
+        tab1_content = PoolStream(self.tab1)
+        
+    def load_tab2(self):
+        # Load the content for Tab 2 from another file
+        from User_Settings import UserSettings
+        tab2_content = UserSettings(self.tab2)
 
-# Create a notebook (tabs)
-notebook = ttk.Notebook(root)
+if __name__ == '__main__':
+    app = App()
+    app.mainloop()
 
-# Create the three tabs
-tab1 = tk.Frame(notebook, bg="white")
-tab2 = tk.Frame(notebook, bg="black")
-tab3 = tk.Frame(notebook, bg="white")
+    
 
-notebook.add(tab1, text="Pool Stream")
-notebook.add(tab2, text="User Settings")
-notebook.add(tab3, text="Pool Settings")
+class Tab1Content:
+    def __init__(self, parent):
+        self.parent = parent
+        self.label = tk.Label(self.parent, text="This is the content for Tab 1")
+        self.label.pack(padx=20, pady=20)
 
-# Create a sidebar that is shared between the tabs
-sidebar = tk.Frame(root, bg="white", width=200)
-sidebar.pack(side="left", fill="y")
-
-# Create the scopes in the sidebar
-scope1 = tk.Frame(sidebar, bg="white", highlightbackground="black", highlightthickness=1)
-scope2 = tk.Frame(sidebar, bg="white", highlightbackground="black", highlightthickness=1)
-scope3 = tk.Frame(sidebar, bg="white", highlightbackground="black", highlightthickness=1)
-
-scope1.pack(side="top", fill="x")
-scope2.pack(side="top", fill="x")
-scope3.pack(side="top", fill="x")
-
-# Create the "Hey" buttons in each scope
-hey_button1 = tk.Button(scope1, text="Hey")
-hey_button2 = tk.Button(scope2, text="Hey")
-hey_button3 = tk.Button(scope3, text="Hey")
-
-hey_button1.pack(side="left", padx=10)
-hey_button2.pack(side="left", padx=10)
-hey_button3.pack(side="left", padx=10)
-
-# Define a function to handle the window closing event
-def on_closing():
-    if messagebox.askokcancel("Quit", "Do you want to quit?"):
-        root.destroy()
-
-root.protocol("WM_DELETE_WINDOW", on_closing)
-
-# Run the application
-notebook.pack(side="right", expand=True, fill="both")
-root.mainloop()
