@@ -6,36 +6,36 @@ class PoolStream:
         self.parent = parent
         self.parent.configure(bg='white')
         
-        GLabel_883=tk.Label(self.parent)
-        GLabel_883["activeforeground"] = "#ffffff"
-        GLabel_883["bg"] = "#000000"
-        GLabel_883["cursor"] = "arrow"
-        ft = tkFont.Font(family='Times',size=10)
-        GLabel_883["font"] = ft
-        GLabel_883["fg"] = "#ffffff"
-        GLabel_883["justify"] = "center"
-        GLabel_883["text"] = "Camera Stream"
-        GLabel_883.place(x=170,y=40,width=1197,height=736)
+        self.parent = parent
+        self.parent.configure(bg='white')
+        Text_label_font= ("Times", 20)
+        H1_label_font=("Times", 40)
+        H2_label_font=("Times", 30)
+        text_color= "#000000"
+        background= "#FFFFFF"
+        
 
-        GButton_362=tk.Button(self.parent)
-        GButton_362["bg"] = "#f0f0f0"
-        ft = tkFont.Font(family='Times',size=10)
-        GButton_362["font"] = ft
-        GButton_362["fg"] = "#000000"
-        GButton_362["justify"] = "center"
-        GButton_362["text"] = "Unarm Warning"
-        GButton_362.place(x=10,y=40,width=141,height=66)
-        GButton_362["command"] = self.GButton_362_command
+        #cam stream
+        label_stream=tk.Label(self.parent, text="Camera Stream", font=H2_label_font,fg=background, bg=text_color, justify="center")
+        label_stream.place(x=200,  y=65, width=1197, height=736)
 
-        GMessage_28=tk.Message(self.parent)
-        ft = tkFont.Font(family='Times',size=10)
-        GMessage_28["font"] = ft
-        GMessage_28["fg"] = "#333333"
-        GMessage_28["justify"] = "center"
-        GMessage_28["text"] = "Pool Stream"
-        GMessage_28.place(x=720,y=10,width=80,height=25)
+        #camera1 btn
+        btn_cam1 = tk.Button(self.parent, text="Camera 1", font=Text_label_font,borderwidth="0px", command=self.btn_cam1_command)
+        btn_cam1.place(x=20,  y=120,width=141,height=30)
 
-    def GButton_362_command(self):
+        #camera2 btn
+        btn_cam2 = tk.Button(self.parent, text="Camera 2", font=Text_label_font,borderwidth="0px", command=self.btn_cam2_command)
+        btn_cam2.place(x=20,  y=160,width=141,height=30)
+
+
+        #header
+        label_header = tk.Label(self.parent, text="Pool Stream", font=H1_label_font,fg=text_color, bg=background,justify="center")
+        label_header.place(x=10, y=10)
+
+
+    def btn_cam1_command(self):
+        print("command")
+    def btn_cam2_command(self):
         print("command")
 
 
