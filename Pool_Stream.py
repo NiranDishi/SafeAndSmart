@@ -1,5 +1,8 @@
 import tkinter as tk
 import tkinter.font as tkFont
+import subprocess
+import os
+
 
 class PoolStream:
     def __init__(self, parent):
@@ -15,17 +18,17 @@ class PoolStream:
         background= "#FFFFFF"
         
 
-        #cam stream
-        label_stream=tk.Label(self.parent, text="Camera Stream", font=H2_label_font,fg=background, bg=text_color, justify="center")
-        label_stream.place(x=200,  y=65, width=1197, height=736)
+        # #cam stream
+        # label_stream=tk.Label(self.parent, text="Camera Stream", font=H2_label_font,fg=background, bg=text_color, justify="center")
+        # label_stream.place(x=200,  y=65, width=1197, height=736)
 
         #camera1 btn
         btn_cam1 = tk.Button(self.parent, text="Camera 1", font=Text_label_font,borderwidth="0px", command=self.btn_cam1_command)
-        btn_cam1.place(x=20,  y=120,width=141,height=30)
+        btn_cam1.place(x=525,  y=120,width=141,height=30)
 
         #camera2 btn
         btn_cam2 = tk.Button(self.parent, text="Camera 2", font=Text_label_font,borderwidth="0px", command=self.btn_cam2_command)
-        btn_cam2.place(x=20,  y=160,width=141,height=30)
+        btn_cam2.place(x=525,  y=160,width=141,height=30)
 
 
         #header
@@ -34,8 +37,16 @@ class PoolStream:
 
 
     def btn_cam1_command(self):
-        print("command")
+        project_path = "../Drowning-Detection--master"
+        os.chdir(project_path)
+        subprocess.run(["python3", "DrownDetect.py"])
+
+
+
+
     def btn_cam2_command(self):
-        print("command")
+        project_path = "../Drowning-Detection--master"
+        os.chdir(project_path)
+        subprocess.run(["python3", "DrownDetect2.py"])
 
 

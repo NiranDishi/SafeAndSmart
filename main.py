@@ -9,7 +9,7 @@ class App(tk.Tk):
         
         # Set up the main window
         self.title("Safe and Smart")
-        self.geometry("1400x800")
+        self.geometry("800x1000")
         
         # Create the tabs
         self.notebook = ttk.Notebook(self)
