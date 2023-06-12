@@ -37,16 +37,21 @@ class PoolStream:
 
 
     def btn_cam1_command(self):
-        project_path = "../Drowning-Detection--master"
+        original_path = os.getcwd()  # Store the original working directory
+        project_path = "AI/"
         os.chdir(project_path)
         subprocess.run(["python3", "DrownDetect.py"])
+        os.chdir(original_path)  # Return to the original working directory
+
 
 
 
 
     def btn_cam2_command(self):
-        project_path = "../Drowning-Detection--master"
+        original_path = os.getcwd()  # Store the original working directory
+        project_path = "AI/"
         os.chdir(project_path)
         subprocess.run(["python3", "DrownDetect2.py"])
+        os.chdir(original_path)  # Return to the original working directory
 
 

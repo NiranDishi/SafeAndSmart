@@ -89,7 +89,7 @@ def alarm_desktop():
 
 def call_alarm(phone_number):
     account_sid = 'ACf5251476a97c95552ff370c750cdf696'
-    auth_token = '26a787a7f36649cf3e286c6e12b94c24'
+    auth_token = '8bdd61d0001ab40d4c823dab06497f86'
     client = Client(account_sid, auth_token)
     call = client.calls.create(
         twiml='<Response><Say>Urgent,Danger in the pool!</Say></Response>',
@@ -99,42 +99,6 @@ def call_alarm(phone_number):
     return call.sid
 
 
-# def call_mac():
-    import subprocess
-    import time
-    import AppKit
-
-    # set the phone number or email address to call
-    destination = "+972546245600"
-
-    # open the FaceTime app and start the call
-    subprocess.run(["open", "facetime://" + destination])
-
-    # wait for the call to be answered
-    print("Waiting for call to be answered...")
-    while True:
-        output = subprocess.check_output(["pgrep", "FaceTime"])
-        if output:
-            break
-        time.sleep(1)
-
-    # play the text-to-speech message
-    speech = AppKit.NSSpeechSynthesizer.alloc().initWithVoice_(None)
-    speech.startSpeakingString_("This is an alarm")
-
-    # wait for the call to end
-    input("Press enter to end the call")
-
-    # end the call by quitting the FaceTime app
-    subprocess.run(["killall", "FaceTime"])
-
-
-
-
-
-
-
-
-
+alarm_desktop()
 print(f"Call SID: {call_alarm('+972527025480')}")
 

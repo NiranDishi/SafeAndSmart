@@ -32,8 +32,8 @@ class App(tk.Tk):
         self.load_tab2()
         
         # Start the camera input and internet connection check
-        self.check_camera_input()
-        self.check_internet_connection()
+        #self.check_camera_input()
+        #self.check_internet_connection()
         
     def load_tab1(self):
         # Load the content for Tab 1 from another file
