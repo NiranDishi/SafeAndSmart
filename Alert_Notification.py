@@ -5,6 +5,7 @@ import threading
 import ctypes
 import platform
 from twilio.rest import Client
+import subprocess
 
 def alarm_desktop():
     # Define the path to the alarm sound file
@@ -86,23 +87,19 @@ def alarm_desktop():
         print("Error: unsupported operating system")
 
 
-
-
-
-
-import subprocess
 def call_alarm(phone_number):
-    account_sid = 'ACf5952cb9a8c5f6c811b2584bc8d20783'
-    auth_token = 'b4591c476c7f568f54002b4158e72c20'
+    account_sid = 'ACf5251476a97c95552ff370c750cdf696'
+    auth_token = '26a787a7f36649cf3e286c6e12b94c24'
     client = Client(account_sid, auth_token)
     call = client.calls.create(
-        from_='+16203373912',
+        twiml='<Response><Say>Urgent,Danger in the pool!</Say></Response>',
+        from_='+13612823958',
         to=phone_number,
-        url='https://handler.twilio.com/twiml/EH2fa2f3f00f72453d700e74a0b875769b'
     )
+    return call.sid
 
 
-def call_mac():
+# def call_mac():
     import subprocess
     import time
     import AppKit
@@ -138,5 +135,6 @@ def call_mac():
 
 
 
-#approve/deny alarm
-alarm_desktop()
+
+print(f"Call SID: {call_alarm('+972527025480')}")
+
