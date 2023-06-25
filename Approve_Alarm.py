@@ -7,7 +7,7 @@ class Approve_Alarm(tk.Tk):
         self.configure(bg='white')
 # Set up the main window
         self.title("ALERT")
-        self.geometry("1400x800")
+        self.geometry("800x1000")
   
 
 
@@ -17,22 +17,18 @@ class Approve_Alarm(tk.Tk):
         text_color= "#000000"
         background= "#FFFFFF"
       
-
-        #cam stream
-        label_stream=tk.Label(self, text="camera stream", font=H2_label_font,fg=background, bg=text_color, justify="center")
-        label_stream.place(x=200,  y=65, width=1197, height=736)
-
+        
         #Approve btn
         btn_approve = tk.Button(self, text="Real-Time Alert", font=Text_label_font,borderwidth="2px", command=self.btn_approve_command,bg="red",highlightbackground="red")
-        btn_approve.place(x=20,  y=120,width=141,height=30)
+        btn_approve.place(x=525,  y=120,width=141,height=30)
 
         #false alarm btn
         btn_false = tk.Button(self, text="False Alarm", font=Text_label_font,borderwidth="2px", command=self.btn_false_command,bg="green",highlightbackground="green")
-        btn_false.place(x=20,  y=160,width=141,height=30)
+        btn_false.place(x=525,  y=160,width=141,height=30)
 
 
         #header
-        label_header = tk.Label(self, text="ALARM!!!  Confirm or deny the event using the buttons", font=H1_label_font,fg=text_color, bg=background,justify="center")
+        label_header = tk.Label(self, text="ALARM!!!\nConfirm or deny the event using the buttons", font=H1_label_font,fg=text_color, bg=background,justify="center")
         label_header.place(x=10, y=10)
 
 
@@ -44,8 +40,5 @@ class Approve_Alarm(tk.Tk):
 if __name__ == '__main__':
     alarmPG = Approve_Alarm()
     alarmPG.mainloop() 
-
-
-
 
 

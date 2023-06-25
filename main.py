@@ -19,10 +19,10 @@ class App(tk.Tk):
         
         # Add the tabs
         self.tab1 = tk.Frame(self.notebook)
-        self.notebook.add(self.tab1, text="Tab 1")
+        self.notebook.add(self.tab1, text="Pool Stream")
         
         self.tab2 = tk.Frame(self.notebook)
-        self.notebook.add(self.tab2, text="Tab 2")
+        self.notebook.add(self.tab2, text="Settings")
         
         # Pack the notebook
         self.notebook.pack(expand=True, fill="both")
